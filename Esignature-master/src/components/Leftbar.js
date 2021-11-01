@@ -1,8 +1,10 @@
-import { Container, makeStyles, Typography } from "@material-ui/core";
+import { Container, makeStyles, TextField, Typography } from "@material-ui/core";
 import BrushSharpIcon from '@mui/icons-material/BrushSharp';
 import EventIcon from '@mui/icons-material/Event';
 import TextFormatIcon from '@mui/icons-material/TextFormat';
 import IndeterminateCheckBoxSharpIcon from '@mui/icons-material/IndeterminateCheckBoxSharp';
+// eslint-disable-next-line no-unused-vars
+import { Draggable } from 'react-drag-and-drop';
 import {
   
   ExitToApp,
@@ -10,6 +12,8 @@ import {
   Person,
   Settings,
 } from "@material-ui/icons";
+
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -49,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Leftbar = () => {
+
   const classes = useStyles();
   return (
     <Container className={classes.container}>
@@ -60,10 +65,12 @@ const Leftbar = () => {
         <Person className={classes.icon} />
         <Typography className={classes.text}>Signers</Typography>
       </div>
-      <div className={classes.item}>
-        <BrushSharpIcon className={classes.icon} />
-        <Typography className={classes.text}>Sign</Typography>
-      </div>
+      <Draggable type="fruit" data={TextField} isDragAndDropElement={true}>
+        <div className={classes.item}>
+          <BrushSharpIcon className={classes.icon} />
+          <Typography className={classes.text} >Sign</Typography>
+        </div>
+      </Draggable>
       <div className={classes.item}>
         <EventIcon className={classes.icon} />
         <Typography className={classes.text}>Date signed</Typography>

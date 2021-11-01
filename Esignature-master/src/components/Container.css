@@ -7,7 +7,7 @@
   padding: 120px 0px 85px 35%;
   text-align: center !important;
   margin: 0;
-  width: 100% !important;
+  width: 70% !important;
 }
 .files input:focus {
   outline: 2px dashed #92b0b3;
@@ -25,7 +25,7 @@
   position: absolute;
   top: 60px;
   left: 0;
-  width: 56px;
+  width: 46px;
   right: 0;
   height: 50px;
   content: "";
@@ -45,7 +45,7 @@
   pointer-events: none;
   width: 100%;
   right: 0;
-  height: 57px;
+  height: 70px;
   content: " or drag it here. ";
   display: block;
   margin: 0 auto;
@@ -53,4 +53,10 @@
   font-weight: 600;
   text-transform: capitalize;
   text-align: center;
+}
+embed {
+  /* iframes are inline by default */
+  /* Reset default border */
+  height: 100vh; /* Viewport-relative units */
+  width: 58vw;
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Preview } from "./Preview";
+import { Preview } from './components/Preview';
 import { Grid, makeStyles } from "@material-ui/core";
 import Add from "./components/Add";
 import Container from "./components/Container";
@@ -7,7 +7,7 @@ import Leftbar from "./components/Leftbar";
 import Navbar from "./components/Navbar";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Rightbar from "./components/Rightbar";///////////////////////////////
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
     
 
-const App = () => {
+function App () {
   const [files,setFiles] = useState([]);
   const onSuccess =(savedfiles)=>{
     setFiles(savedfiles)
@@ -40,11 +40,20 @@ const App = () => {
         </Grid>
         <Grid item sm={7} xs={10}>
           <Container onSuccess={onSuccess}/>
+          <Grid item sm={7} xs={4}>
+          <Preview files={files}/> 
         </Grid>
+        </Grid>
+
         
+        <Grid item sm={2} xs={2}>
+          <Rightbar />
+        </Grid>
+
+
+
       </Grid>
       <Add />
-      <Preview files={files}/>
     </div>
   );
 };
