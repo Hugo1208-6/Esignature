@@ -2,11 +2,14 @@ import './Container.css';
 import { useState } from 'react';
 import axios from 'axios';
  import {toast } from 'react-toastify';
+ // eslint-disable-next-line no-unused-vars
+ import { Draggable, Droppable } from 'react-drag-and-drop';
+
 export const Container =({onSuccess}) =>{
     const [files, setFiles] = useState([]);
     const onInputChange = (e) => {
         setFiles(e.target.files)
-        console.log(e.target.files)
+      
     };
     const onSubmit = (e) =>{
         e.preventDefault();
@@ -20,16 +23,16 @@ export const Container =({onSuccess}) =>{
 
         
         axios.post('//localhost:8000/upload',data)
-        .then((files)=>{
+        .then((response)=>{
             toast.success('Uploading...')
-            onSuccess(files.data)
+            onSuccess(response.data)
             console.log(files.length)
         })
         .catch( (e)=>{
             toast.error('Failed to upload')
         })
     };
-
+            
 
     return (
         <form method="post" action="#" id="#" onSubmit = {onSubmit} >
@@ -37,8 +40,9 @@ export const Container =({onSuccess}) =>{
                 <label>Upload Your File </label>
                 <input type="file"
                        onChange={onInputChange}
-                       className="form-control"
+                       className="form-control"    
                        multiple/>
+                       
             </div>
 
             <button>Submit</button>
